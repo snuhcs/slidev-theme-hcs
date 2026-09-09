@@ -17,7 +17,7 @@
   "homepage": "https://github.com/snuhcs/slidev-theme-hcs#readme",
   "bugs": "https://github.com/snuhcs/slidev-theme-hcs/issues",
   "license": "MIT",
-  "author": "Seonjun Kim <seonjun.kim@hcs.snu.ac.kr>",
+  "author": "Seonjun Kim <cyanide17@snu.ac.kr>",
   "engines": {
     "node": ">=22.12.0",
     "slidev": ">=52.19.1"
