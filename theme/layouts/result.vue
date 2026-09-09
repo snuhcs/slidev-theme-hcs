@@ -1,0 +1,1 @@
+<template><HcsFrame><div class="hcs-result"><div><slot /></div><div class="hcs-figure-area"><slot name="figure" /></div><div class="hcs-takeaway"><slot name="takeaway" /></div></div></HcsFrame></template>

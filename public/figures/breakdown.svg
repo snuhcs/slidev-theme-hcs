@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 270" font-family="Noto Sans, Helvetica Neue, Arial, sans-serif">
+  <rect width="480" height="270" fill="#ffffff"/>
+
+  <g stroke="#e8e8ee" stroke-width="1">
+    <line x1="52" y1="193" x2="462" y2="193"/>
+    <line x1="52" y1="158" x2="462" y2="158"/>
+    <line x1="52" y1="123" x2="462" y2="123"/>
+    <line x1="52" y1="88" x2="462" y2="88"/>
+    <line x1="52" y1="53" x2="462" y2="53"/>
+    <line x1="52" y1="18" x2="462" y2="18"/>
+  </g>
+
+  <g stroke="#9a9aae" stroke-width="1.2">
+    <line x1="52" y1="18" x2="52" y2="228"/>
+    <line x1="52" y1="228" x2="462" y2="228"/>
+  </g>
+
+  <g fill="#656565" font-size="11" text-anchor="end">
+    <text x="45" y="232">0</text>
+    <text x="45" y="197">10</text>
+    <text x="45" y="162">20</text>
+    <text x="45" y="127">30</text>
+    <text x="45" y="92">40</text>
+    <text x="45" y="57">50</text>
+    <text x="45" y="22">60</text>
+  </g>
+
+  <text x="14" y="123" fill="#434343" font-size="12" text-anchor="middle" transform="rotate(-90 14 123)">Latency (ms)</text>
+
+  <g fill="#7077a1">
+    <rect x="70.25" y="81" width="30" height="147"/>
+    <rect x="172.75" y="130" width="30" height="98"/>
+    <rect x="275.25" y="165" width="30" height="63"/>
+    <rect x="377.75" y="49.5" width="30" height="178.5"/>
+  </g>
+
+  <g fill="#2d3250">
+    <rect x="106.25" y="144" width="30" height="84"/>
+    <rect x="208.75" y="161.5" width="30" height="66.5"/>
+    <rect x="311.25" y="196.5" width="30" height="31.5"/>
+    <rect x="413.75" y="63.5" width="30" height="164.5"/>
+  </g>
+
+  <g fill="#656565" font-size="11" text-anchor="middle">
+    <text x="103.25" y="244">Compile</text>
+    <text x="205.75" y="244">Schedule</text>
+    <text x="308.25" y="244">Transfer</text>
+    <text x="410.75" y="244">Execute</text>
+  </g>
+
+  <g font-size="11.5">
+    <rect x="292" y="26" width="166" height="46" fill="#ffffff" stroke="#e0e0e8"/>
+    <rect x="304" y="35" width="24" height="10" fill="#7077a1"/>
+    <text x="336" y="44" fill="#434343">Baseline</text>
+    <rect x="304" y="54" width="24" height="10" fill="#2d3250"/>
+    <text x="336" y="63" fill="#434343">Proposed</text>
+  </g>
+</svg>

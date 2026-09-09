@@ -1,0 +1,5 @@
+import '@fontsource/noto-sans/400.css'
+import '@fontsource/noto-sans/700.css'
+import '@fontsource/noto-sans-kr/400.css'
+import '@fontsource/noto-sans-kr/700.css'
+import './hcs.css'

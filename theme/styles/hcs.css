@@ -1,0 +1,85 @@
+/* HCS PPT template: 720 x 405 pt mapped to 960 x 540 CSS px (4/3).
+   Geometry and colours come from slideMaster1 and HCS_Navy theme2.
+   Edit these tokens once to change the entire deck. */
+:root {
+  --hcs-navy: #2d3250;
+  --hcs-heading: #424769;
+  --hcs-muted: #7077a1;
+  --hcs-accent: #f6b17a;
+  --hcs-paper: #f2f2f2;
+  --hcs-body: #434343;
+  --hcs-title-size: 32px;
+  --hcs-body-size: 21.333px;
+  --hcs-title-font: 'Helvetica Neue', Arial, 'Noto Sans KR', sans-serif;
+  --hcs-body-font: 'Noto Sans', 'Noto Sans KR', sans-serif;
+  --hcs-gap: 28px;
+}
+.slidev-layout.hcs-slide, .slidev-layout.hcs-cover, .slidev-layout.hcs-section, .slidev-layout.hcs-end {
+  width: 100%; height: 100%; padding: 0; position: relative;
+  font-family: var(--hcs-body-font); font-size: var(--hcs-body-size);
+  line-height: 1.35; color: var(--hcs-body); background: white;
+}
+.hcs-content { position: absolute; inset: 25.65px 42.32px 35px; }
+.hcs-content h1 { font-family: var(--hcs-title-font); font-size: var(--hcs-title-size); font-weight: 700; color: var(--hcs-heading); line-height: 1.18; margin: 0 0 20px; }
+.hcs-content h2 { font-size: 25px; color: var(--hcs-heading); margin: 0 0 16px; font-weight: 700; }
+.hcs-content p { margin: 0 0 12px; }
+.hcs-content ul { list-style-type: disc; padding-left: 48px; margin: 0; }
+.hcs-content li { padding-left: 0; margin: 0 0 8px; }
+.hcs-content ul ul { list-style-type: circle; font-size: 18.667px; margin-top: 8px; }
+.hcs-content ul ul ul { list-style-type: square; font-size: 16px; }
+.hcs-content strong { color: var(--hcs-heading); font-weight: 700; }
+.hcs-content blockquote { margin: 0 0 12px; padding: 4px 0 4px 14px; border-left: 3px solid var(--hcs-accent); color: var(--hcs-heading); }
+.hcs-content blockquote p { margin: 0; }
+.hcs-content mark { background: var(--hcs-accent); color: var(--hcs-navy); padding: 0 3px; }
+.hcs-footer { position: absolute; bottom: 0; height: 18.08px; width: 100%; background: var(--hcs-heading); color: white; display: flex; justify-content: flex-end; align-items: center; padding: 0 8px; font: 10.667px var(--hcs-title-font); }
+.hcs-page { margin-right: auto; }
+.hcs-stack { display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 16px; height: 100%; }
+.hcs-stack > div:first-child > :last-child { margin-bottom: 0; }
+.hcs-figure-grid, .hcs-columns { min-height: 0; display: grid; grid-template-columns: 1fr 1fr; gap: var(--hcs-gap); }
+.hcs-columns.image-left .hcs-column-text { order: 2; }
+.hcs-columns.image-left .hcs-figure-area { order: 1; }
+.hcs-column-text { min-width: 0; }
+.hcs-column-text ul { padding-left: 28px; }
+.hcs-figure-area { min-height: 0; min-width: 0; height: 100%; }
+.hcs-figure { margin: 0; height: 100%; display: flex; flex-direction: column; }
+.hcs-image-box { flex: 1; min-height: 0; width: 100%; position: relative; }
+.hcs-image-box > img { width: 100%; height: 100%; object-fit: contain; }
+.hcs-figure figcaption { flex: none; text-align: center; font-size: 15px; color: #656565; padding-top: 8px; }
+.hcs-arrow { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+.hcs-cover-title { position: absolute; top: 85px; left: 20px; right: 20px; height: 190px; display: flex; flex-direction: column; justify-content: flex-end; text-align: center; }
+.hcs-cover-title h1 { font: 400 53.333px/1.1 var(--hcs-title-font); color: var(--hcs-heading); margin: 0; }
+.hcs-cover-subtitle { position: absolute; top: 294.5px; left: 74px; right: 74px; text-align: center; color: var(--hcs-muted); font: 20px/1.2 var(--hcs-title-font); }
+.hcs-cover-subtitle p, .hcs-cover-author p { margin: 0; }
+.hcs-cover-rule { position: absolute; top: 348.4px; left: 44.13%; width: 11.745%; height: 1px; background: #ccc; }
+.hcs-cover-author { position: absolute; top: 378px; left: 190px; right: 190px; color: #b7b7b7; text-align: center; font: 20px/1.2 var(--hcs-title-font); }
+.hcs-brand { position: absolute; }
+.hcs-brand img { display: block; max-width: none; }
+.hcs-brand-cover { inset: 0; pointer-events: none; }
+.hcs-brand-cover .snu-color { position: absolute; left: 33.967%; top: 84.644%; width: 16.191%; height: 12.394%; }
+.hcs-brand-cover .hcs-color { position: absolute; left: 51.459%; top: 84.426%; width: 12.986%; height: 12.831%; }
+.slidev-layout.hcs-section, .slidev-layout.hcs-end { background: var(--hcs-navy); color: var(--hcs-paper); }
+.hcs-center { position: absolute; left: 4.41%; right: 4.41%; top: 41.82%; height: 16.36%; display: flex; align-items: center; justify-content: center; text-align: center; }
+.hcs-center h1 { margin: 0; font: 400 48px/1.15 var(--hcs-title-font); color: var(--hcs-paper); }
+.hcs-end .hcs-center h1 { font-size: 53.333px; }
+.hcs-brand-section { left: 1.1685%; top: 1.38%; height: 6.67%; display: flex; align-items: center; gap: 0; }
+.snu-crest { position: relative; height: 100%; aspect-ratio: 1; overflow: hidden; }
+.snu-crest img { height: 100%; width: auto; }
+.hcs-brand-section .hcs-white { width: 61.04px; height: 33.92px; object-fit: contain; }
+.hcs-brand-end { left: 31.053%; top: 80.42%; width: 37.9%; height: 16.23%; }
+.hcs-brand-end .snu-crest { position: absolute; left: 0; top: 13.9%; width: 20.46%; height: 84.92%; }
+.hcs-brand-end .hcs-white { position: absolute; left: 20.9%; top: 0; width: 79.1%; height: 98.07%; object-fit: contain; }
+.hcs-note { font-size: 16px; color: #7077a1; }
+/* Keep Korean words together instead of breaking individual syllables. */
+.hcs-content { word-break: keep-all; overflow-wrap: break-word; }
+
+.hcs-statement { height: 100%; display: flex; flex-direction: column; justify-content: center; text-align: center; padding: 0 35px; }
+.hcs-statement h1 { font-size: 44px; line-height: 1.2; }
+.hcs-statement-support { color: var(--hcs-muted); margin-top: 16px; }
+.hcs-full-figure { height: 100%; }
+.hcs-result { display: grid; grid-template-rows: auto minmax(0,1fr) auto; gap: 14px; height: 100%; }
+.hcs-result > div:first-child > :last-child { margin-bottom: 0; }
+.hcs-takeaway { border-top: 2px solid var(--hcs-accent); padding-top: 12px; }
+.hcs-takeaway p { margin: 0; }
+.hcs-content table { width: 100%; border-collapse: collapse; font-size: 19px; }
+.hcs-content th, .hcs-content td { text-align: left; padding: 10px 14px; border-bottom: 1px solid #ddd; }
+.hcs-content th { color: var(--hcs-heading); font-weight: 700; border-bottom: 2px solid var(--hcs-muted); }

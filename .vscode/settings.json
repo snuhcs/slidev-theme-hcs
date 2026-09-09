@@ -1,0 +1,10 @@
+{
+  "slidev.include": [
+    "slides.md",
+    "layouts.md"
+  ],
+  "markdownlint.ignore": [
+    "slides.md",
+    "layouts.md"
+  ]
+}

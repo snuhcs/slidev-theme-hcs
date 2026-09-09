@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 270" font-family="Noto Sans, Helvetica Neue, Arial, sans-serif">
+  <rect width="480" height="270" fill="#ffffff"/>
+
+  <g stroke="#e8e8ee" stroke-width="1">
+    <line x1="52" y1="181.3" x2="462" y2="181.3"/>
+    <line x1="52" y1="134.7" x2="462" y2="134.7"/>
+    <line x1="52" y1="88" x2="462" y2="88"/>
+    <line x1="52" y1="41.3" x2="462" y2="41.3"/>
+  </g>
+
+  <g stroke="#9a9aae" stroke-width="1.2">
+    <line x1="52" y1="18" x2="52" y2="228"/>
+    <line x1="52" y1="228" x2="462" y2="228"/>
+  </g>
+
+  <g fill="#656565" font-size="11" text-anchor="end">
+    <text x="45" y="185">0.6</text>
+    <text x="45" y="138.5">0.7</text>
+    <text x="45" y="91.8">0.8</text>
+    <text x="45" y="45.1">0.9</text>
+  </g>
+
+  <g fill="#656565" font-size="11" text-anchor="middle">
+    <text x="52" y="244">0</text>
+    <text x="154.5" y="244">25</text>
+    <text x="257" y="244">50</text>
+    <text x="359.5" y="244">75</text>
+    <text x="462" y="244">100</text>
+    <text x="257" y="262" fill="#434343" font-size="12">Training epoch</text>
+  </g>
+
+  <text x="14" y="123" fill="#434343" font-size="12" text-anchor="middle" transform="rotate(-90 14 123)">Accuracy</text>
+
+  <polyline fill="none" stroke="#7077a1" stroke-width="2" stroke-dasharray="5 4"
+    points="52,223.3 93,181.3 134,144 175,116 216,97.3 257,83.3 298,74 339,67 380,63.7 421,61.3 462,60"/>
+
+  <polyline fill="none" stroke="#2d3250" stroke-width="2.4"
+    points="52,218.7 93,134.7 134,88 175,62.3 216,48.3 257,41.3 298,37.6 339,34.8 380,32.9 421,32 462,31.5"/>
+
+  <g font-size="11.5">
+    <rect x="300" y="150" width="158" height="46" fill="#ffffff" stroke="#e0e0e8"/>
+    <line x1="312" y1="164" x2="336" y2="164" stroke="#2d3250" stroke-width="2.4"/>
+    <text x="344" y="168" fill="#434343">Proposed</text>
+    <line x1="312" y1="183" x2="336" y2="183" stroke="#7077a1" stroke-width="2" stroke-dasharray="5 4"/>
+    <text x="344" y="187" fill="#434343">Baseline</text>
+  </g>
+</svg>
