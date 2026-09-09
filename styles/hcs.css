@@ -24,6 +24,7 @@
 .hcs-content h2 { font-size: 25px; color: var(--hcs-heading); margin: 0 0 16px; font-weight: 700; }
 .hcs-content p { margin: 0 0 12px; }
 .hcs-content ul { list-style-type: disc; padding-left: 48px; margin: 0; }
+.hcs-content ol { list-style-type: decimal; padding-left: 48px; margin: 0; }
 .hcs-content li { padding-left: 0; margin: 0 0 8px; }
 .hcs-content ul ul { list-style-type: circle; font-size: 18.667px; margin-top: 8px; }
 .hcs-content ul ul ul { list-style-type: square; font-size: 16px; }
@@ -41,6 +42,13 @@
 .hcs-column-text { min-width: 0; }
 .hcs-column-text ul { padding-left: 28px; }
 .hcs-figure-area { min-height: 0; min-width: 0; height: 100%; }
+.hcs-figure-row { min-height: 0; display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: var(--hcs-gap); }
+.hcs-figure-row > .hcs-figure { min-height: 0; min-width: 0; }
+.hcs-agenda { height: 100%; }
+.hcs-agenda ol, .hcs-agenda ul { font-size: 24px; line-height: 1.85; padding-left: 38px; }
+.hcs-agenda li { margin-bottom: 4px; }
+.hcs-agenda .slidev-toc { font-size: 24px; line-height: 1.85; }
+.hcs-agenda .slidev-toc-item a { color: inherit; text-decoration: none; }
 .hcs-figure { margin: 0; height: 100%; display: flex; flex-direction: column; }
 .hcs-image-box { flex: 1; min-height: 0; width: 100%; position: relative; }
 .hcs-image-box > img { width: 100%; height: 100%; object-fit: contain; }

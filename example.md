@@ -1,11 +1,6 @@
 ---
-theme: ./theme
-title: Layout Gallery
-aspectRatio: 16/9
-canvasWidth: 960
-colorSchema: light
-fonts:
-  provider: none
+theme: ./
+title: HCS Theme
 layout: cover
 ---
 
@@ -19,7 +14,7 @@ Human-Centered Computer Systems Lab
 
 <!--
 This deck is the reference for what the theme can do.
-Open layouts.md next to it: each slide shows the markdown that produced it.
+Open example.md next to it: each slide shows the markdown that produced it.
 -->
 
 ---
@@ -29,8 +24,18 @@ layout: default
 # How to Read This Deck
 
 - Every slide names the layout that produced it.
-- The source is `layouts.md`. Copy a slide out of it rather than writing
-  frontmatter from memory.
+- The source is `example.md` in the theme repository. Copy a slide out of it
+  rather than writing frontmatter from memory.
+- Your own deck needs two lines of frontmatter, because the theme supplies the
+  rest:
+
+```md
+---
+theme: hcs
+title: My talk
+---
+```
+
 - A slide starts with `---`, and the `key: value` block right after it is that
   slide's frontmatter:
 
@@ -49,6 +54,23 @@ layout: text-image
 ```
 
 - `::name::` fills a named slot. Anything before the first one is the title.
+
+---
+layout: agenda
+---
+
+# `agenda`
+
+1. **Problem** — what breaks today
+2. **Approach** — what this work changes
+3. **Evaluation** — what the evidence shows
+4. **Discussion** — what is still open
+
+<!--
+A roomier list than `default`, for the outline slide and for the "where we are"
+slide you return to between sections. Write the items yourself, or drop in
+Slidev's built-in <Toc columns="2" /> to build them from the slide titles.
+-->
 
 ---
 layout: section
@@ -103,6 +125,25 @@ layout: two-figures
 
 ::right::
 <HcsFigure src="/figures/breakdown.svg" alt="Latency broken down into four stages" caption="(b) Latency breakdown" />
+
+---
+layout: figures
+---
+
+# `figures`
+
+- Any number of figures in one row. `two-figures` is the two-up special case;
+  reach for this one when a comparison has three or more panels.
+
+::figures::
+<HcsFigure src="/figures/curves.svg" alt="Accuracy against training epoch" caption="(a) Convergence" />
+<HcsFigure src="/figures/breakdown.svg" alt="Latency broken down into four stages" caption="(b) Latency" />
+<HcsFigure src="/figures/pipeline.svg" alt="Workload feeds a generator that emits schedules" caption="(c) Pipeline" />
+
+<!--
+cols gives the panels unequal widths, the same way ratio does on two-cols:
+layout: figures with cols: 1.3fr 1fr 1fr.
+-->
 
 ---
 layout: text-image
@@ -354,7 +395,7 @@ layout: default
 - Presenter view and drawing have no key bound. Both are buttons on the
   navigation bar, which appears at the bottom-left corner.
 - Presenter and slide windows stay in sync across devices only under a dev
-  server (`npm run dev:layouts`). A static build syncs windows of one browser.
+  server (`npm run dev`). A static build syncs windows of one browser.
 
 ---
 layout: end

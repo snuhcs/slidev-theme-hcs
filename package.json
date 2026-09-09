@@ -1,23 +1,51 @@
 {
-  "name": "hcs-slides",
-  "private": true,
+  "name": "slidev-theme-hcs",
+  "version": "1.0.0",
   "type": "module",
+  "description": "Seoul National University HCS Lab presentation theme for Slidev",
+  "keywords": [
+    "slidev-theme",
+    "slidev",
+    "hcs",
+    "snu",
+    "presentation"
+  ],
+  "license": "MIT",
   "engines": {
-    "node": ">=22.12.0"
+    "node": ">=22.12.0",
+    "slidev": ">=52.19.1"
+  },
+  "files": [
+    "layouts",
+    "components",
+    "styles",
+    "assets",
+    "example.md",
+    "public"
+  ],
+  "slidev": {
+    "colorSchema": "light",
+    "defaults": {
+      "aspectRatio": "16/9",
+      "canvasWidth": 960,
+      "fonts": {
+        "provider": "none"
+      }
+    }
   },
   "scripts": {
-    "dev": "slidev slides.md --port 3030",
-    "dev:layouts": "slidev layouts.md --port 3031",
-    "build": "slidev build slides.md",
-    "export": "slidev export slides.md --output exports/slides.pdf",
-    "export:steps": "slidev export slides.md --with-clicks --output exports/slides-steps.pdf",
-    "export:pptx": "slidev export slides.md --format pptx --output exports/slides.pptx"
+    "dev": "slidev example.md --port 3030",
+    "build": "slidev build example.md",
+    "export": "slidev export example.md --output exports/example.pdf",
+    "export:steps": "slidev export example.md --with-clicks --output exports/example-steps.pdf",
+    "export:pptx": "slidev export example.md --format pptx --output exports/example.pptx"
+  },
+  "dependencies": {
+    "@fontsource/noto-sans": "^5.2.0",
+    "@fontsource/noto-sans-kr": "^5.2.0"
   },
   "devDependencies": {
     "@slidev/cli": "52.19.1",
-    "@fontsource/noto-sans": "^5.2.0",
-    "@fontsource/noto-sans-kr": "^5.2.0",
     "playwright-chromium": "^1.55.0"
-  },
-  "description": "HCS laboratory presentation template for Slidev"
+  }
 }

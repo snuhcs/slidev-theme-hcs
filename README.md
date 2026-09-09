@@ -1,68 +1,64 @@
-# HCS Slidev Template
+# slidev-theme-hcs
 
-A [Slidev](https://sli.dev/) presentation template for the **Human-Centered Computer Systems Lab at Seoul National University**.
+A [Slidev](https://sli.dev/) theme for the **Human-Centered Computer Systems Lab
+at Seoul National University**.
 
-The theme follows the HCS PowerPoint format: a 16:9 canvas, navy headings and section slides, the lab footer, and the original SNU and HCS logos. Write slide content in Markdown and manage the presentation in Git.
+It follows the HCS PowerPoint format: a 16:9 canvas, navy headings and section
+slides, the lab footer, and the original SNU and HCS marks. You write the talk in
+Markdown and keep it in Git.
 
-![HCS slide layouts](docs/preview.png)
+![HCS slide layouts](screenshot.png)
 
-## Setup (macOS and Linux)
+## Use it
 
-1. Install [Node.js](https://nodejs.org/en/download) **22.12 or later** and [VS Code](https://code.visualstudio.com/). npm is included with Node.js. If using nvm, run `nvm install` in this repository to use the version in `.nvmrc`.
-2. Open the repository folder in VS Code, then install the locked project dependencies in its integrated terminal:
+The theme is not published yet, so a deck picks it up from a checkout sitting
+next to it:
 
-   ```sh
-   PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm ci
-   ```
-
-   Preview and website builds do not need Chromium. A global Slidev CLI installation is unnecessary; the project includes its own version.
-3. Install the recommended [Slidev extension](https://marketplace.visualstudio.com/items?itemName=antfu.slidev) (`antfu.slidev`).
-4. Open `slides.md`, select the **Slidev** sidebar, and start the preview. Use the extension's preview controls to view slides inside VS Code or in your browser.
-
-The extension starts a development server in the terminal with:
-
-```sh
-npm exec -c 'slidev "slides.md" --port 3030'
+```text
+projects/
+  slidev-theme-hcs/    this repository
+  my-talk/             your deck
 ```
 
-No custom extension command is required. Run this command from the repository folder if starting the server manually. The browser preview is available at **http://localhost:3030**. Saving Markdown, theme files, or assets updates the preview automatically.
+```json
+{
+  "devDependencies": {
+    "@slidev/cli": "^52.19.1",
+    "slidev-theme-hcs": "file:../slidev-theme-hcs"
+  }
+}
+```
 
-The workspace excludes Slidev entry files from markdownlint because Slidev uses multiple top-level headings, frontmatter, Vue components, and inline HTML as presentation syntax. Regular Markdown files such as this README are still checked.
-
-Stop the server with **Ctrl+C in its terminal** when finished. Closing a browser tab does not stop the server. Use one preview server at a time; do not also run `npm run dev` while the extension's server is running.
-
-## Create a presentation
-
-`slides.md` is a minimal presentation ready to edit. Replace its title, author, and content to begin your talk. The complete layout gallery is available in `layouts.md`; open that file with the Slidev extension, or run `npm run dev:layouts` to page through it on port 3031. Every slide in it names the layout that produced it, so copy a slide out of the file rather than writing frontmatter from memory.
-
-Separate slides with `---` and select a layout in the slide's frontmatter:
+After `npm install`, two lines of frontmatter on the first slide:
 
 ```md
 ---
-layout: text-image
-ratio: 0.9fr 1.1fr
+theme: hcs
+title: My talk
 ---
 
-# Research results
-
-::text::
-
-- Describe the main observation.
-- Highlight the **key interpretation**.
-
-::image::
-<HcsFigure src="/figures/result.png" alt="Experimental results" caption="Figure 1. Experimental results" />
+# My talk
 ```
 
-Place images in `public/figures/` and reference them as `/figures/filename`. `HcsFigure` preserves the full image and its aspect ratio. Add `fit="cover"` only when intentional cropping is appropriate.
+That is the whole headmatter. The theme sets the aspect ratio, canvas width,
+color scheme, and fonts, so decks do not repeat them and cannot drift apart.
+Slidev resolves the name `hcs` to the `slidev-theme-hcs` package in
+`node_modules`, so nothing in a deck refers to this directory by path.
 
-For another entry file in the repository root:
+New to Slidev itself? Its [documentation](https://sli.dev/) covers writing,
+presenting, and exporting. This theme changes none of that — only how the
+slides look.
+
+## See every layout
+
+`example.md` is a deck that demonstrates every layout and component, and each
+slide names the layout that produced it. Copy slides out of it rather than
+writing frontmatter from memory.
 
 ```sh
-npm exec -c 'slidev "talk.md" --port 3030'
+npm install
+npm run dev
 ```
-
-Stop an existing preview first. The theme path is relative to the entry file.
 
 ## Layouts
 
@@ -70,9 +66,11 @@ Stop an existing preview first. The theme path is relative to the entry file.
 | --- | --- | --- |
 | `cover` | default, `subtitle`, `author` | Title, affiliation, presenter |
 | `default` | default | Bullets, tables, equations, references |
+| `agenda` | default | Outline, and the "where we are" slide between sections |
 | `section` | default | Section divider |
 | `figure` | default, `figure` | Text above one figure |
 | `two-figures` | default, `left`, `right` | Text above two figures |
+| `figures` | default, `figures` | Three or more figures in one row |
 | `text-image` | default, `text`, `image` | Explanation beside a figure |
 | `two-cols` | default, `left`, `right` | Baseline/proposal, pros/cons, two text columns |
 | `statement` | default, `support` | One takeaway or research question |
@@ -80,45 +78,59 @@ Stop an existing preview first. The theme path is relative to the entry file.
 | `result` | default, `figure`, `takeaway` | Evidence with a short interpretation below |
 | `end` | default | Closing slide |
 
-The default slot holds the heading and introductory text, except in `full-figure`, where it holds an `HcsFigure`. Named slots use `::slot-name::` syntax. See `layouts.md` for complete examples.
+The default slot holds the heading and introductory text, except in
+`full-figure`, where it holds an `HcsFigure`. Named slots use `::slot-name::`.
 
-For `text-image`, set `imageSide: left` to put the image first. The `ratio` option on `text-image` and `two-cols` controls **left and right** column widths, such as `1fr 1fr` or `2fr 1fr`.
+For `text-image`, `imageSide: left` puts the image first. The `ratio` option on
+`text-image` and `two-cols` sets the two column widths, such as `1fr 1fr` or
+`2fr 1fr`. `figures` spaces its panels evenly; `cols` overrides that with
+explicit widths, as in `cols: 1.3fr 1fr 1fr`.
 
-Layouts do not automatically shrink text. Split dense content across slides instead of reducing font size.
+`agenda` is a roomier list than `default`. Write the items yourself, or drop in
+Slidev's built-in `<Toc columns="2" />` to build them from the slide titles.
 
-## Clicks, arrows, and equations
+Layouts do not shrink text to fit. Split dense content across slides instead of
+reducing the font size.
 
-Reveal content on a specific click:
+Per slide, `number: true` shows that slide's page number and
+`footer: 'Your footer'` overrides the default footer.
+
+## Components
+
+- `HcsFigure` — a figure with a caption. `src`, `alt`, `caption`, and `fit`
+  (`contain` by default, `cover` to fill and crop).
+- `HcsArrow` — an arrow drawn over a figure. Put it inside `HcsFigure` and give
+  `x1`, `y1`, `x2`, `y2` on a 0–100 grid over the figure container, including
+  any empty space around an uncropped image. `color` changes the stroke.
+- `HcsBrand` — the SNU and HCS logos. The `cover`, `section`, and `end` layouts
+  place it already; you rarely write it yourself.
+- `HcsFrame` — the white slide frame with the footer, used by every content
+  layout.
 
 ```md
-<v-click at="1">
-
-- Reveal this observation on the first click.
-
-</v-click>
-
-<v-click at="2">
-
-- Add the <mark>main interpretation</mark> on the second click.
-
-</v-click>
-```
-
-Place an arrow inside a figure:
-
-```html
-<HcsFigure src="/figures/result.png" alt="Experimental results">
+<HcsFigure src="/figures/result.png" alt="Experimental results" caption="Fig. 1">
   <HcsArrow v-click="1" :x1="25" :y1="20" :x2="70" :y2="60" />
 </HcsFigure>
 ```
 
-Arrow coordinates range from 0 to 100 across the **figure container**, including any space around an uncropped image. Set `color="#d46a26"` to change the arrow color. Use arrow keys to advance through click steps.
+## Figures
 
-Inline math uses `$...$`; display equations use `$$...$$`. Equations are rendered with KaTeX. English and Korean text are supported.
+Put images in your deck's own `public/` and reference them from the root:
 
-## Theme customization
+```text
+my-talk/
+  slides.md
+  public/figures/result.png   ->  <HcsFigure src="/figures/result.png" ... />
+```
 
-Edit the variables at the top of `theme/styles/hcs.css` to change the entire presentation:
+`HcsFigure` resolves a leading `/` against the deck's base path, so the same
+path works under the dev server and under a site deployed at a subpath.
+`HcsFigure` never crops: it fits the whole image into the space available. Use
+`fit="cover"` only when cropping is deliberate.
+
+## Customization
+
+The design tokens live at the top of `styles/hcs.css`:
 
 ```css
 :root {
@@ -129,69 +141,39 @@ Edit the variables at the top of `theme/styles/hcs.css` to change the entire pre
 }
 ```
 
-The template maps the source deck's 720 × 405 pt canvas to 960 × 540 CSS pixels. Keep `canvasWidth: 960` and `aspectRatio: 16/9` in the presentation headmatter.
+The theme maps the source deck's 720 × 405 pt canvas to 960 × 540 CSS pixels.
 
-Headings prefer Helvetica Neue, with fallbacks on other operating systems. Noto Sans and Noto Sans KR are bundled through npm, so the preview does not fetch Google Fonts. To make heading typography consistent across macOS and Linux, set `--hcs-title-font` to `'Noto Sans', 'Noto Sans KR', sans-serif`. Browser typography may differ slightly from PowerPoint.
+Headings prefer Helvetica Neue and fall back on other systems. Noto Sans and
+Noto Sans KR ship with the theme through `@fontsource`, so a deck never fetches
+Google Fonts. For heading typography that is identical on macOS and Linux, set
+`--hcs-title-font` to `'Noto Sans', 'Noto Sans KR', sans-serif`.
 
-Set `number: true` on an ordinary content slide to show its page number. Set `footer: 'Your footer'` to override the default footer.
+If a change would help everyone, open an issue or a pull request here rather
+than editing a copy inside your own deck — a copy stops receiving fixes.
 
-## Build and export
-
-```sh
-# Static website in dist/
-npm run build
-
-# Website hosted under a subpath
-npm run build -- --base /repository-name/
-```
-
-Building does not publish the presentation. Upload or deploy `dist/` separately.
-
-For PDF or PowerPoint export, install Chromium once:
-
-```sh
-# macOS
-npx playwright install chromium
-
-# Linux (also installs required system libraries; may request sudo)
-npx playwright install --with-deps chromium
-```
-
-Then export:
-
-```sh
-npm run export        # PDF: exports/slides.pdf
-npm run export:steps  # PDF with a page for each click step
-npm run export:pptx   # Image-based PowerPoint: exports/slides.pptx
-```
-
-Browser presentations retain interactions. PDFs are static; `export:steps` expands clicks into separate pages. PPTX slides are images, not editable text and shapes, and clicks become separate slides rather than PowerPoint animations.
-
-## Repository structure
+## Developing the theme
 
 ```text
-slides.md             Presentation to edit
-layouts.md            Complete layout gallery
-theme/layouts/        Reusable slide layouts
-theme/components/     Branding, figures, and arrows
-theme/styles/hcs.css   Shared design tokens and styles
-theme/assets/         Original SNU and HCS logo assets
-public/figures/       Presentation images and example figures
-.vscode/              Slidev extension recommendation and entry files
-.nvmrc                Node.js version for nvm
+layouts/          one .vue per layout
+components/       HcsFigure, HcsArrow, HcsBrand, HcsFrame
+styles/           hcs.css design tokens, index.ts font imports
+assets/           SNU and HCS logo files
+example.md        the deck that documents the theme
+public/figures/   figures used by example.md
 ```
 
-Commit Markdown, theme files, source assets, and the lockfile. Exclude `node_modules/`, `dist/`, and `exports/`. For larger presentations, split content into files and include them with Slidev's `src` frontmatter.
+```sh
+npm run dev       # example.md at http://localhost:3030
+npm run build     # static build of example.md
+npm run export    # exports/example.pdf, needs Chromium
+```
 
-## Troubleshooting
+Add a layout by dropping a `.vue` file in `layouts/`, then add a slide for it to
+`example.md` and a row to the table above. A layout that is not in `example.md`
+is a layout nobody will find.
 
-- **`slidev: command not found`:** run `PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm ci` in the repository folder. Ensure development dependencies are installed; do not use `--omit=dev`.
-- **`node` or `npm` is unavailable in VS Code:** check `node --version` and `npm --version` in its integrated terminal. Restart VS Code after installing Node.js or changing your shell's PATH.
-- **Port 3030 is occupied:** an existing preview may still be running. Stop it in its terminal before starting another preview. For a manual server on another port, run `npm exec -c 'slidev "slides.md" --port 3031'`.
-- **Changes do not appear:** save the file and confirm that the extension started the correct entry file from this repository.
-- **`EMFILE` / too many file watchers:** stop the preview and run `CHOKIDAR_USEPOLLING=1 npm run dev` in the integrated terminal, then open the browser preview. This enables polling at the cost of extra CPU usage.
-- **Dependencies changed after pulling updates:** stop the preview, rerun `PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm ci`, and start it again.
+## Assets and license
 
-## Assets
-
-SNU and HCS marks remain the property of their respective owners. Example charts use synthetic data and do not represent research findings.
+The theme code is MIT licensed. The SNU and HCS marks in `assets/` remain the
+property of their respective owners and are included for lab use. Example charts
+use synthetic data and do not represent research results.
