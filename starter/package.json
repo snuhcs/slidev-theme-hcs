@@ -1,0 +1,14 @@
+{
+  "name": "my-talk",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "slidev --open",
+    "build": "slidev build",
+    "export": "slidev export"
+  },
+  "devDependencies": {
+    "@slidev/cli": "^52.19.1",
+    "slidev-theme-hcs": "github:snuhcs/slidev-theme-hcs"
+  }
+}

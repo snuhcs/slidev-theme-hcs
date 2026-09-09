@@ -9,27 +9,30 @@ Markdown and keep it in Git.
 
 ![HCS slide layouts](screenshot.png)
 
-## Use it
+## Start a talk
 
-The theme is not published yet, so a deck picks it up from a checkout sitting
-next to it:
-
-```text
-projects/
-  slidev-theme-hcs/    this repository
-  my-talk/             your deck
+```sh
+npx degit snuhcs/slidev-theme-hcs/starter my-talk
+cd my-talk
+npm install
+npm run dev
 ```
 
-```json
-{
-  "devDependencies": {
-    "@slidev/cli": "^52.19.1",
-    "slidev-theme-hcs": "file:../slidev-theme-hcs"
-  }
-}
+`starter/` is a complete deck: `slides.md` in the lab format, a `package.json`
+that pulls in Slidev and this theme, `public/figures/` for your images, and a
+`.vscode/` that recommends the Slidev extension. Open the folder in VS Code and
+press play in the Slidev sidebar, or run `npm run dev` yourself.
+
+`degit` copies the folder without any git history, so `git init` afterwards
+gives you a clean repository for your own talk.
+
+## Add the theme to a deck you already have
+
+```sh
+npm i -D github:snuhcs/slidev-theme-hcs
 ```
 
-After `npm install`, two lines of frontmatter on the first slide:
+Then two lines of frontmatter on the first slide:
 
 ```md
 ---
@@ -43,7 +46,15 @@ title: My talk
 That is the whole headmatter. The theme sets the aspect ratio, canvas width,
 color scheme, and fonts, so decks do not repeat them and cannot drift apart.
 Slidev resolves the name `hcs` to the `slidev-theme-hcs` package in
-`node_modules`, so nothing in a deck refers to this directory by path.
+`node_modules`, so nothing in a deck refers to this repository by path.
+
+Pin a release if a deck has to keep rendering the same way forever:
+
+```sh
+npm i -D github:snuhcs/slidev-theme-hcs#v1.0.0
+```
+
+and pull later fixes with `npm update slidev-theme-hcs`.
 
 New to Slidev itself? Its [documentation](https://sli.dev/) covers writing,
 presenting, and exporting. This theme changes none of that — only how the
@@ -51,11 +62,16 @@ slides look.
 
 ## See every layout
 
-`example.md` is a deck that demonstrates every layout and component, and each
-slide names the layout that produced it. Copy slides out of it rather than
-writing frontmatter from memory.
+**[docs/gallery.md](docs/gallery.md) shows every slide of `example.md` as an
+image**, each one labelled with the layout that produced it. It is the fastest
+way to find the layout you want.
+
+`example.md` itself is the source those images come from, so copy slides out of
+it rather than writing frontmatter from memory. To page through it live:
 
 ```sh
+git clone https://github.com/snuhcs/slidev-theme-hcs
+cd slidev-theme-hcs
 npm install
 npm run dev
 ```
@@ -148,8 +164,9 @@ Noto Sans KR ship with the theme through `@fontsource`, so a deck never fetches
 Google Fonts. For heading typography that is identical on macOS and Linux, set
 `--hcs-title-font` to `'Noto Sans', 'Noto Sans KR', sans-serif`.
 
-If a change would help everyone, open an issue or a pull request here rather
-than editing a copy inside your own deck — a copy stops receiving fixes.
+If a change would help everyone, open an
+[issue](https://github.com/snuhcs/slidev-theme-hcs/issues) or a pull request
+rather than editing a copy inside your own deck — a copy stops receiving fixes.
 
 ## Developing the theme
 
@@ -160,17 +177,20 @@ styles/           hcs.css design tokens, index.ts font imports
 assets/           SNU and HCS logo files
 example.md        the deck that documents the theme
 public/figures/   figures used by example.md
+starter/          the deck folder a new talk starts from
+docs/gallery.md   generated: every slide of example.md as an image
 ```
 
 ```sh
 npm run dev       # example.md at http://localhost:3030
 npm run build     # static build of example.md
 npm run export    # exports/example.pdf, needs Chromium
+npm run gallery   # re-render docs/gallery/ and screenshot.png
 ```
 
 Add a layout by dropping a `.vue` file in `layouts/`, then add a slide for it to
-`example.md` and a row to the table above. A layout that is not in `example.md`
-is a layout nobody will find.
+`example.md`, add a row to the table above, and run `npm run gallery`. A layout
+that is not in `example.md` is a layout nobody will find.
 
 ## Assets and license
 

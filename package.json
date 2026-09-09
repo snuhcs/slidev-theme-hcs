@@ -10,6 +10,12 @@
     "snu",
     "presentation"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snuhcs/slidev-theme-hcs.git"
+  },
+  "homepage": "https://github.com/snuhcs/slidev-theme-hcs#readme",
+  "bugs": "https://github.com/snuhcs/slidev-theme-hcs/issues",
   "license": "MIT",
   "author": "Seonjun Kim <seonjun.kim@hcs.snu.ac.kr>",
   "engines": {
@@ -39,7 +45,8 @@
     "build": "slidev build example.md",
     "export": "slidev export example.md --output exports/example.pdf",
     "export:steps": "slidev export example.md --with-clicks --output exports/example-steps.pdf",
-    "export:pptx": "slidev export example.md --format pptx --output exports/example.pptx"
+    "export:pptx": "slidev export example.md --format pptx --output exports/example.pptx",
+    "gallery": "./scripts/gallery"
   },
   "dependencies": {
     "@fontsource/noto-sans": "^5.2.0",
@@ -47,6 +54,7 @@
   },
   "devDependencies": {
     "@slidev/cli": "52.19.1",
+    "@slidev/parser": "52.19.1",
     "playwright-chromium": "^1.55.0"
   }
 }
