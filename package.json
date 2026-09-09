@@ -11,6 +11,7 @@
     "presentation"
   ],
   "license": "MIT",
+  "author": "Seonjun Kim <seonjun.kim@hcs.snu.ac.kr>",
   "engines": {
     "node": ">=22.12.0",
     "slidev": ">=52.19.1"
